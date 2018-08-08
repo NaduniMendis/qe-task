@@ -1,0 +1,5 @@
+com/sysco/tests/home/HomeTest.class
+com/sysco/utils/LoggerUtil.class
+com/sysco/tests/account/MyaccountTest.class
+com/sysco/utils/TestBase.class
+com/sysco/tests/cart/CartTest.class
