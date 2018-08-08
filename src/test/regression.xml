@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression" verbose="1" configfailurepolicy="continue">
+    <test name="regression">
+        <packages>
+            <package name="com.sysco.tests"/>
+        </packages>
+
+        <classes>
+            <class name="com.sysco.tests.home.HomeTest" />
+            <class name="com.sysco.tests.account.MyaccountTest" />
+            <class name="com.sysco.tests.cart.CartTest" />
+        </classes>
+    </test>
+</suite>
