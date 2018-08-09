@@ -12,16 +12,16 @@ public class HomeTest extends TestBase {
     SoftAssert sAssert = new SoftAssert();
     @BeforeClass
     public void init(ITestContext iTestContext) {
-        iTestContext.setAttribute("feature", "Login - ValidLogin");
+        iTestContext.setAttribute("feature", "Bundabergrum_V1 - Checkout_V1");
     }
 
-    @Test (priority = 1)
+    @Test (description = "test1", alwaysRun = true,priority = 1)
     public void testLoadHome() {
         Home.loadHomePage();
         sAssert.assertEquals(Home.agecheckAppear(), true, "Couldn't load website");
     }
 
-    @Test (priority = 3)
+    @Test (description = "test2",alwaysRun = true,priority = 3)
     public void testValidAge(){
         Home.ageCheck("5","June","1993");
         Home.clickSubmit();
@@ -29,12 +29,12 @@ public class HomeTest extends TestBase {
 //        Home.quiteDriver();
     }
 
-    @Test (priority = 2)
+    @Test (description = "test3",alwaysRun = true,priority = 2)
     public void testInvalidAge(){
         Home.ageCheck("5","July","2000");
         Home.clickSubmit();
         sAssert.assertEquals(Home.appearError(), true, "Invalid Age validation is not working");
-        Home.quiteDriver();
+
     }
 }
 

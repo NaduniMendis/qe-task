@@ -14,7 +14,7 @@ public class MyaccountTest extends TestBase {
     SoftAssert sAssert = new SoftAssert();
     @BeforeClass
     public void setUp(ITestContext iTestContext) {
-        iTestContext.setAttribute("feature", "Bundabergrum - Checkout");
+        iTestContext.setAttribute("feature", "Bundabergrum_V1 - Checkout_V1");
 
         Home.loadHomePage();
         Home.ageCheck("5","January","1990");
@@ -22,20 +22,20 @@ public class MyaccountTest extends TestBase {
         Home.checkLoadpage();
     }
 
-    @Test (priority = 0)
+    @Test (description = "test4",alwaysRun = true,priority = 1)
     public void testAccount() {
         Myaccount.clickAccount();
         sAssert.assertEquals(Myaccount.verifyLgnbtn(), true, "Failed");
     }
 
-    @Test (priority = 1)
+    @Test (description = "test5", alwaysRun = true,priority = 2)
     public void testEmail(){
         Myaccount.enterEmail("emailemaildys..com");
         sAssert.assertEquals(Myaccount.displayEmailerror(), true, "Failed");
       //  Myaccount.displayEmailerror();
     }
 
-    @Test (priority = 2)
+    @Test (description = "test6", alwaysRun = true,priority = 3)
     public void testinvalidLogin(){
         Myaccount.enterEmail("nads@gmail.com");
         Myaccount.enterPassword("1231233");
@@ -43,17 +43,23 @@ public class MyaccountTest extends TestBase {
         //Myaccount.displayCredentialserror();
     }
 
-    @Test (priority = 3)
-    public void testvalidLogin(){
-        Myaccount.enterEmail("williamjacob802@gmail.com");
-        Myaccount.enterPassword("12345678");
-        Assert.fail();
+//    @Test (description = "test7", alwaysRun = true, priority = 4)
+//    public void testvalidLogin(){
+//        Myaccount.enterEmail("williamjacob802@gmail.com");
+//        Myaccount.enterPassword("12345678");
+////        Assert.fail();
+////        Myaccount.displayUsername();
+//        sAssert.assertEquals(Myaccount.displayUsername().contains("William Jacob"),true,"Failed");
+//
+//    }
+
+    @Test (description = "test7", alwaysRun = true, priority = 4)
+    public void testvalidLogin2(){
+        Myaccount.enterEmail("nadunimendis@gmail.com");
+        Myaccount.enterPassword("123123123");
+//        Assert.fail();
 //        Myaccount.displayUsername();
         sAssert.assertEquals(Myaccount.displayUsername().contains("William Jacob"),true,"Failed");
-
-
-
-//        Home.quiteDriver();
 
     }
 

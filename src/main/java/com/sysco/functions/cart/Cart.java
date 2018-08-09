@@ -34,4 +34,46 @@ public class Cart {
     public static void itemCheckout() {
         ogmCartPage.checkoutFromCart();
     }
+
+    public static String checkItemName() {
+        return ogmCartPage.verifyItemname();
+    }
+
+    public static String checkItemprice() {
+        return ogmCartPage.verifyItemprice();
+
+    }
+
+    public static void proceedtoCheckout() {
+        ogmCartPage.clickProceedtocheckout();
+    }
+
+    public static String checkFirstname() {
+        return ogmCartPage.verifyFirstname();
+    }
+
+    public static String checkLastname() {
+        return ogmCartPage.verifyLastname();
+    }
+
+    public static void clickContinue() {
+        ogmCartPage.clickContinue();
+
+    }
+
+    public static void clickContinueshipbtn() {
+        ogmCartPage.clickContinueshipmethod();
+    }
+
+    public static void clearformdetails() {
+        ogmCartPage.clearform();
+    }
+
+    public static String getEmptyfieldserror() {
+        return ogmCartPage.verifyFormempty();
+    }
+
+    public static void fillformdetails() {
+        ogmCartPage.fillform();
+    }
 }
