@@ -8,20 +8,20 @@ import org.testng.asserts.SoftAssert;
 import org.testng.ITestContext;
 
 public class HomeTest extends TestBase {
-
+//https://github.com/NaduniMendis/qe-task.git
     SoftAssert sAssert = new SoftAssert();
     @BeforeClass
     public void init(ITestContext iTestContext) {
         iTestContext.setAttribute("feature", "Login - ValidLogin");
     }
 
-    @Test (priority = 0)
-    public void testLoadHome() throws Exception {
+    @Test (priority = 1)
+    public void testLoadHome() {
         Home.loadHomePage();
         sAssert.assertEquals(Home.agecheckAppear(), true, "Couldn't load website");
     }
 
-    @Test (priority = 2)
+    @Test (priority = 3)
     public void testValidAge(){
         Home.ageCheck("5","June","1993");
         Home.clickSubmit();
@@ -29,7 +29,7 @@ public class HomeTest extends TestBase {
 //        Home.quiteDriver();
     }
 
-    @Test (priority = 1)
+    @Test (priority = 2)
     public void testInvalidAge(){
         Home.ageCheck("5","July","2000");
         Home.clickSubmit();
