@@ -14,7 +14,7 @@ public class MyaccountTest extends TestBase {
     SoftAssert sAssert = new SoftAssert();
     @BeforeClass
     public void setUp(ITestContext iTestContext) {
-        iTestContext.setAttribute("feature", "Naduni - abc");
+        iTestContext.setAttribute("feature", "Bundabergrum - Checkout");
 
         Home.loadHomePage();
         Home.ageCheck("5","January","1990");
