@@ -38,11 +38,10 @@ public class CartPage extends MyaccountPage {
     }
 
     public void clickRemove() {
-        num= syscoLabUIOgm.findElement(cartIcon).getText();
-        noOfItems=Integer.parseInt(num);
+//        num= syscoLabUIOgm.findElement(cartIcon).getText();
+//        noOfItems=Integer.parseInt(num);
 //
 //        while (syscoLabUIOgm.findElement(txtCartempty).isDisplayed()==false){
-        num= syscoLabUIOgm.findElement(cartIcon).getText();
         gotoCart();
         syscoLabUIOgm.mouseHover(popupCart);
         syscoLabUIOgm.findElement(btnRemove).click();
@@ -92,9 +91,9 @@ public class CartPage extends MyaccountPage {
        // syscoLabUIOgm.findElement(txtPostcode).sendKeys(postcode);
 
         syscoLabUIOgm.findElement(btnProceedtocheckout).click();
-        syscoLabUIOgm.sleep(20);
+        syscoLabUIOgm.sleep(10);
         syscoLabUIOgm.findElement(btnContinue).click();
-        syscoLabUIOgm.sleep(20);
+        syscoLabUIOgm.sleep(10);
         syscoLabUIOgm.findElement(btnContinueshipmethod).click();
 
     }

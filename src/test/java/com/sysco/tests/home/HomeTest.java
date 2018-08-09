@@ -34,6 +34,7 @@ public class HomeTest extends TestBase {
         Home.ageCheck("5","July","2000");
         Home.clickSubmit();
         sAssert.assertEquals(Home.appearError(), true, "Invalid Age validation is not working");
+        Home.quiteDriver();
     }
 }
 

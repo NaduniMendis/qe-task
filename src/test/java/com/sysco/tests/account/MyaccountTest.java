@@ -3,6 +3,8 @@ package com.sysco.tests.account;
 import com.sysco.functions.account.Myaccount;
 import com.sysco.functions.home.Home;
 import com.sysco.utils.TestBase;
+import org.junit.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -11,7 +13,9 @@ public class MyaccountTest extends TestBase {
 
     SoftAssert sAssert = new SoftAssert();
     @BeforeClass
-    public void setUp() {
+    public void setUp(ITestContext iTestContext) {
+        iTestContext.setAttribute("feature", "Naduni - abc");
+
         Home.loadHomePage();
         Home.ageCheck("5","January","1990");
         Home.clickSubmit();
@@ -43,8 +47,14 @@ public class MyaccountTest extends TestBase {
     public void testvalidLogin(){
         Myaccount.enterEmail("williamjacob802@gmail.com");
         Myaccount.enterPassword("12345678");
+        Assert.fail();
 //        Myaccount.displayUsername();
         sAssert.assertEquals(Myaccount.displayUsername().contains("William Jacob"),true,"Failed");
+
+
+
+//        Home.quiteDriver();
+
     }
 
 }

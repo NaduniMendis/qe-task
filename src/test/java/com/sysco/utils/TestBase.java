@@ -1,5 +1,6 @@
 package com.sysco.utils;
 
+import com.sysco.functions.home.Home;
 import com.syscolab.qe.core.reporting.SyscoLabListener;
 import com.syscolab.qe.core.reporting.SyscoLabQCenter;
 import com.syscolab.qe.core.reporting.SyscoLabReporting;
@@ -41,6 +42,8 @@ public class TestBase {
 
             if (Constants.UPDATE_DASHBOARD)
                 SyscoLabReporting.generateJsonFile(SyscoLabListener.getResults(), syscoLabQCenter);
+
+            Home.quiteDriver();
 
         } catch (Exception e) {
             e.printStackTrace();

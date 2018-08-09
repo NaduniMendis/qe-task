@@ -61,6 +61,8 @@ public class HomePage {
 
     public void quitDriver() {
         if (syscoLabUIOgm != null) {
+
+            syscoLabUIOgm.sleep(10);
             syscoLabUIOgm.quit();
         }
     }

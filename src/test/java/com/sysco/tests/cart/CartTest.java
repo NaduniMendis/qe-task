@@ -4,6 +4,7 @@ import com.sysco.functions.account.Myaccount;
 import com.sysco.functions.cart.Cart;
 import com.sysco.functions.home.Home;
 import com.sysco.utils.TestBase;
+import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -12,7 +13,9 @@ public class CartTest extends TestBase {
 
     SoftAssert sAssert = new SoftAssert();
     @BeforeClass
-    public void setUp() {
+    public void setUp(ITestContext iTestContext) {
+        iTestContext.setAttribute("feature", "Naduni - abc");
+
         Home.loadHomePage();
         Home.ageCheck("5","May","1992");
         Home.clickSubmit();
@@ -49,6 +52,7 @@ public class CartTest extends TestBase {
     @Test(priority = 6)
     public void checkoutCart(){
         Cart.itemCheckout();
+        Home.quiteDriver();
     }
 
 
