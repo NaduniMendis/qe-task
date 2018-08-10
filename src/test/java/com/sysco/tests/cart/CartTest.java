@@ -21,10 +21,10 @@ public class CartTest extends TestBase {
         Home.clickSubmit();
         Home.checkLoadpage();
         Myaccount.clickAccount();
-        Myaccount.enterEmail("williamjacob802@gmail.com");
-        Myaccount.enterPassword("12345678");
-//        Myaccount.enterEmail("nadunimendis@gmail.com");
-//        Myaccount.enterPassword("123123123");
+//        Myaccount.enterEmail("williamjacob802@gmail.com");
+//        Myaccount.enterPassword("12345678");
+        Myaccount.enterEmail("nadunimendis@gmail.com");
+        Myaccount.enterPassword("123123123");
     }
 
     @Test (description = "test8",alwaysRun = true,priority = 1)
@@ -74,7 +74,7 @@ public class CartTest extends TestBase {
 
     }
 
-    @Test(description = "test14",alwaysRun = true,priority = 8)
+    @Test(description = "test15",alwaysRun = true,priority = 8)
     public void test_firstname_and_lastname(){
         Cart.checkFirstname();
         sAssert.assertEquals(Cart.checkFirstname(),
@@ -85,7 +85,7 @@ public class CartTest extends TestBase {
         sAssert.assertAll();
     }
 
-    @Test(description = "test15",alwaysRun = true,priority = 9)
+    @Test(description = "test16",alwaysRun = true,priority = 9)
     public void test_validate_continuebtn(){
         Cart.clearformdetails();
         Cart.clickContinue();
@@ -95,14 +95,14 @@ public class CartTest extends TestBase {
     }
 
 
-    @Test(description = "test16",alwaysRun = true,priority = 10)
+    @Test(description = "test17",alwaysRun = true,priority = 10)
     public void test_continuebtn(){
         Cart.fillformdetails();
         Cart.clickContinue();
 
     }
 
-    @Test(description = "test17",alwaysRun = true,priority = 11)
+    @Test(description = "test18",alwaysRun = true,priority = 11)
     public void test_continueshipbtn(){
         Cart.clickContinueshipbtn();
 

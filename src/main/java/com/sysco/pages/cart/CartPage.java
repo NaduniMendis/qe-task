@@ -5,13 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class CartPage extends MyaccountPage {
 
-
-
-    String num;
+   // private  int noOfItems;
+    private String num;
     private By iconCart=By.xpath("//*[@id=\"cartHeader\"]");
     private By popupCart= By.id("topCartContent");
         private By btnRemove= By.xpath("//*[contains(text(),'Remove')]");
@@ -66,16 +67,17 @@ public class CartPage extends MyaccountPage {
         syscoLabUIOgm.waitTillElementLoaded(popupCart);
         syscoLabUIOgm.sleep(2);
         syscoLabUIOgm.findElement(btnRemove).click();
+        syscoLabUIOgm.sleep(2);
         if(syscoLabUIOgm.isAlertDisplayed())
             syscoLabUIOgm.clickOkInWindowsAlert();
 //    }
-        syscoLabUIOgm.sleep(5);
-        int noOfItems = Integer.parseInt(syscoLabUIOgm.findElement(cartIcon).getText());
-//        num= syscoLabUIOgm.findElement(cartIcon).getText();
+        syscoLabUIOgm.sleep(4);
+        int noOfItems = Integer.parseInt(syscoLabUIOgm.getText(cartIcon));
+//        num=syscoLabUIOgm.getText(cartIcon);
 //        noOfItems=Integer.parseInt(num);
 //        System.out.println(num);
-        System.out.println(noOfItems);
-        if(noOfItems>0){
+//        System.out.println(noOfItems);
+        if(noOfItems!=0){
             for(int i=0;i<noOfItems;i++) {
                 gotoCart();
                 syscoLabUIOgm.waitTillElementLoaded(popupCart);
@@ -86,7 +88,7 @@ public class CartPage extends MyaccountPage {
                     syscoLabUIOgm.clickOkInWindowsAlert();
             }
         }
-        System.out.println(noOfItems);
+//        System.out.println(noOfItems);
 
 
     }
@@ -171,12 +173,18 @@ public class CartPage extends MyaccountPage {
             syscoLabUIOgm.clickOkInWindowsAlert();
             syscoLabUIOgm.sleep(5);
         }
-        if(syscoLabUIOgm.findElement(txtCheckout).isDisplayed())  syscoLabUIOgm.findElement(btnContinue).click();
+        if(syscoLabUIOgm.findElement(txtCheckout).isDisplayed()) {
+
+            syscoLabUIOgm.sleep(5);
+            if(syscoLabUIOgm.findElement(btnContinue).isDisplayed())
+            syscoLabUIOgm.findElement(btnContinue).click();
+        }
     }
 
     public void clickContinueshipmethod() {
+        syscoLabUIOgm.sleep(5);
         syscoLabUIOgm.findElement(btnContinueshipmethod).click();
-        syscoLabUIOgm.sleep(10);;
+        syscoLabUIOgm.sleep(2);;
     }
 
 
@@ -184,7 +192,7 @@ public class CartPage extends MyaccountPage {
         syscoLabUIOgm.findElement(txtFirstname).clear();
         syscoLabUIOgm.findElement(txtLastname).clear();
         syscoLabUIOgm.findElement(textAddress1).clear();
-        //syscoLabUIOgm.findElement(btnPostcode).click();
+        syscoLabUIOgm.findElement(btnPostcode).click();
         syscoLabUIOgm.findElement(txtContactnum).clear();
 
 
@@ -200,25 +208,21 @@ public class CartPage extends MyaccountPage {
         syscoLabUIOgm.findElement(txtLastname).sendKeys("jacob");
         syscoLabUIOgm.findElement(textAddress1).sendKeys("12/1, Park Street");
         syscoLabUIOgm.findElement(textPostcode).sendKeys("2000");
-        Select cityDropDown = new Select(syscoLabUIOgm.findElement(drpDwnCity));
-        cityDropDown.selectByIndex(0);
-//        cityDropDown.selectByValue("2000 DAWES POINT NSW");
-//        cityDropDown.selectByVisibleText("2000 DAWES POINT NSW");
-//        syscoLabUIOgm.mouseHover(cityDropDownItem);
-//        syscoLabUIOgm.findElement(cityDropDownItem).click();
 
-//        WebElement select = syscoLabUIOgm.findElement(drpDwnCity);
-//        List<WebElement> options = select.findElements(By.tagName("li"));
-//
-//        for (WebElement option1 : options) {
-//
-//            if("2000 DAWES POINT NSW".equals(option1.getText().trim()))
-//
-//                option1.click();
-//        }
-//
-
-
+        try {
+            Robot robot = new Robot();
+            for (int i = 1; i <= 2; i++) {
+                robot.delay(1000);
+                robot.keyPress(KeyEvent.VK_DOWN);
+                robot.keyRelease(KeyEvent.VK_DOWN);
+            }
+            robot.keyPress(KeyEvent.VK_ENTER);
+            syscoLabUIOgm.sleep(1);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            robot.delay(2000);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
         syscoLabUIOgm.findElement(txtContactnum).sendKeys("777777");
 
     }
