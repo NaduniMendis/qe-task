@@ -24,7 +24,7 @@ public class CartPage extends MyaccountPage {
     private By btnAddtocart= By.xpath("//*[@id=\"price-inner-content\"]/div[2]/div/div[2]/button");
     private By btnCheckout= By.xpath("//*[@id=\"topCartContent\"]/div/div/div/button/span/span");
     private By btnProceedtocheckout= By.xpath("//div[@id='price-total-content']//ul[@class='checkout-types']//button[@title='Proceed to Checkout']/span/span");
-    private By cartIcon=By.xpath("//*[@id=\\\"quick-access-list\\\"]/li[2]/ul/li[3]/div/div[1]/span[2]");
+    private By cartIcon=By.xpath("/*[@id=\\\"quick-access-list\\\"]/li[2]/ul/li[3]/div/div[1]/span[2]");
     private By btnContinue= By.id("delivery-address-button");
     private By btnContinueshipmethod= By.id("shipping-method-button");
     private By txtPostcode =By.id("postcodesuburb");
@@ -69,12 +69,11 @@ public class CartPage extends MyaccountPage {
         if(syscoLabUIOgm.isAlertDisplayed())
             syscoLabUIOgm.clickOkInWindowsAlert();
 //    }
-        syscoLabUIOgm.sleep(2);
-        int noOfItems =0;
-//        noOfItems = Integer.parseInt(syscoLabUIOgm.findElement(cartIcon).getText());
-      num=syscoLabUIOgm.findElement(cartIcon).getText();
+        syscoLabUIOgm.sleep(5);
+        int noOfItems = Integer.parseInt(syscoLabUIOgm.findElement(cartIcon).getText());
+//        num= syscoLabUIOgm.findElement(cartIcon).getText();
 //        noOfItems=Integer.parseInt(num);
-        System.out.println(num);
+//        System.out.println(num);
         System.out.println(noOfItems);
         if(noOfItems>0){
             for(int i=0;i<noOfItems;i++) {
@@ -172,7 +171,7 @@ public class CartPage extends MyaccountPage {
             syscoLabUIOgm.clickOkInWindowsAlert();
             syscoLabUIOgm.sleep(5);
         }
-        if(syscoLabUIOgm.findElement(txtCheckout).isDisplayed())  {syscoLabUIOgm.findElement(btnContinue).click();}
+        if(syscoLabUIOgm.findElement(txtCheckout).isDisplayed())  syscoLabUIOgm.findElement(btnContinue).click();
     }
 
     public void clickContinueshipmethod() {
@@ -200,9 +199,9 @@ public class CartPage extends MyaccountPage {
         syscoLabUIOgm.findElement(txtFirstname).sendKeys("william");
         syscoLabUIOgm.findElement(txtLastname).sendKeys("jacob");
         syscoLabUIOgm.findElement(textAddress1).sendKeys("12/1, Park Street");
-        //syscoLabUIOgm.findElement(textPostcode).sendKeys("2000");
-//        Select cityDropDown = new Select(syscoLabUIOgm.findElement(drpDwnCity));
-//        cityDropDown.selectByIndex(0);
+        syscoLabUIOgm.findElement(textPostcode).sendKeys("2000");
+        Select cityDropDown = new Select(syscoLabUIOgm.findElement(drpDwnCity));
+        cityDropDown.selectByIndex(0);
 //        cityDropDown.selectByValue("2000 DAWES POINT NSW");
 //        cityDropDown.selectByVisibleText("2000 DAWES POINT NSW");
 //        syscoLabUIOgm.mouseHover(cityDropDownItem);
@@ -218,6 +217,8 @@ public class CartPage extends MyaccountPage {
 //                option1.click();
 //        }
 //
+
+
         syscoLabUIOgm.findElement(txtContactnum).sendKeys("777777");
 
     }
