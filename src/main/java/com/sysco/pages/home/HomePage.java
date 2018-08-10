@@ -28,25 +28,25 @@ public class HomePage {
         syscoLabUIOgm.driver.manage().window().maximize();
     }
 
-    public boolean waitForText(){
-        //syscoLabUIOgm.waitTillElementLoaded()
-       return syscoLabUIOgm.findElement(msgEnterage).isDisplayed();
+    public String waitForText(){
+        syscoLabUIOgm.waitTillElementLoaded(msgEnterage);
+        return syscoLabUIOgm.getText(msgEnterage);
+//       return syscoLabUIOgm.findElement(msgEnterage).isDisplayed();
+    }
+
+    public String checkError() {
+        syscoLabUIOgm.waitTillElementLoaded(errorMsg);
+        return syscoLabUIOgm.getText(errorMsg);
+//        return syscoLabUIOgm.findElement(errorMsg).isDisplayed();
     }
 
     public void verifyAge(String day,String month, String year) {
-
         Select dayDropDown = new Select(syscoLabUIOgm.findElement(drpDwnDay));
         dayDropDown.selectByVisibleText(day);
         Select monthDropDown = new Select(syscoLabUIOgm.findElement(drpDwnMonth));
         monthDropDown.selectByVisibleText(month);
         Select yearDropDown = new Select(syscoLabUIOgm.findElement(drpDwnYear));
         yearDropDown.selectByVisibleText(year);
-
-
-    }
-    public void uncheckDevice() {
-        WebElement checkBox = syscoLabUIOgm.findElement(chkRemDevice); checkBox.click();
-        //syscoLabUIOgm.findElement(chkRemDevice).click();
     }
 
     public void clickButton() {
@@ -55,8 +55,12 @@ public class HomePage {
 
     }
 
-    public void loadNextPage() {
-        syscoLabUIOgm.waitTillElementDisappear(btnEnter);
+    public boolean loadNextPage() {
+//        syscoLabUIOgm.waitTillElementDisappear(btnEnter);
+        if(syscoLabUIOgm.waitTillElementDisappear(btnEnter))
+        { return true;}
+        else
+            return false;
     }
 
     public void quitDriver() {
@@ -66,9 +70,7 @@ public class HomePage {
             syscoLabUIOgm.quit();
         }
     }
-    public boolean checkError() {
-        return syscoLabUIOgm.findElement(errorMsg).isDisplayed();
-    }
+
 
     public void enterText(String searchString) {
         syscoLabUIOgm.sendKeys(txtGoogleSearch, searchString);

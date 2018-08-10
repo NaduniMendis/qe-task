@@ -32,7 +32,6 @@ public class MyaccountTest extends TestBase {
     public void testEmail(){
         Myaccount.enterEmail("emailemaildys..com");
         sAssert.assertEquals(Myaccount.displayEmailerror(), true, "Failed");
-      //  Myaccount.displayEmailerror();
     }
 
     @Test (description = "test6", alwaysRun = true,priority = 3)
@@ -40,27 +39,29 @@ public class MyaccountTest extends TestBase {
         Myaccount.enterEmail("nads@gmail.com");
         Myaccount.enterPassword("1231233");
         sAssert.assertEquals(Myaccount.displayCredentialserror(), true, "Failed");
-        //Myaccount.displayCredentialserror();
     }
 
-//    @Test (description = "test7", alwaysRun = true, priority = 4)
-//    public void testvalidLogin(){
-//        Myaccount.enterEmail("williamjacob802@gmail.com");
-//        Myaccount.enterPassword("12345678");
-////        Assert.fail();
-////        Myaccount.displayUsername();
-//        sAssert.assertEquals(Myaccount.displayUsername().contains("William Jacob"),true,"Failed");
-//
-//    }
+    @Test (description = "test6", alwaysRun = true,priority = 3)
+    public void testemptyCredentials(){
+        Myaccount.enterEmail("");
+        Myaccount.enterPassword("");
+        sAssert.assertEquals(Myaccount.displayCredentialserror(), true, "Failed");
+    }
 
     @Test (description = "test7", alwaysRun = true, priority = 4)
-    public void testvalidLogin2(){
-        Myaccount.enterEmail("nadunimendis@gmail.com");
-        Myaccount.enterPassword("123123123");
-//        Assert.fail();
-//        Myaccount.displayUsername();
+    public void testvalidLogin(){
+        Myaccount.enterEmail("williamjacob802@gmail.com");
+        Myaccount.enterPassword("12345678");
         sAssert.assertEquals(Myaccount.displayUsername().contains("William Jacob"),true,"Failed");
 
     }
+
+//    @Test (description = "test7", alwaysRun = true, priority = 4)
+//    public void testvalidLogin2(){
+//        Myaccount.enterEmail("nadunimendis@gmail.com");
+//        Myaccount.enterPassword("123123123");
+//        sAssert.assertEquals(Myaccount.displayUsername().contains("William Jacob"),true,"Failed");
+//
+//    }
 
 }

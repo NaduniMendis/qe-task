@@ -20,28 +20,23 @@ public class Home {
         }
     }
 
-    public static boolean agecheckAppear(){
-        return ogmHomePage.waitForText();
+    public static String agecheckAppear(){
+         return ogmHomePage.waitForText();
     }
 
     public static void ageCheck(String day1, String month1, String year1) {
         ogmHomePage.verifyAge(day1, month1, year1);
     }
-    public static void forgetDevice() {
-
-        ogmHomePage.uncheckDevice();
-    }
-
 
     public static void clickSubmit() {
         ogmHomePage.clickButton();
     }
 
-    public static void checkLoadpage() {
-        ogmHomePage.loadNextPage();
+    public static boolean checkLoadpage() {
+        return ogmHomePage.loadNextPage();
     }
 
-    public static boolean appearError() {
+    public static String appearValidationmsg() {
         return ogmHomePage.checkError();
     }
 
