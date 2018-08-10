@@ -25,7 +25,7 @@
 //    }
 //
 //
-//    public static void quiteDriver() {
+//    public static void quitDriverFunction() {
 //        ogmLoginPage.quitDriver();
 //    }
 //

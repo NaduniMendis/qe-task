@@ -8,7 +8,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class Home {
     public static HomePage ogmHomePage = new HomePage();
 
-
     public static void loadHomePage() {
 
         if (Constants.RUN_LOCALLY) {
@@ -32,22 +31,16 @@ public class Home {
         ogmHomePage.clickButton();
     }
 
-    public static boolean checkLoadpage() {
-        return ogmHomePage.loadNextPage();
-    }
-
     public static String appearValidationmsg() {
         return ogmHomePage.checkError();
     }
 
+    public static boolean checkLoadpage() {
+        return ogmHomePage.loadNextPage();
+    }
 
-    public static void quiteDriver() {
+    public static void quitDriverFunction() {
         ogmHomePage.quitDriver();
     }
-
-    public static void loginToFtr() {
-    }
-
-
 
 }

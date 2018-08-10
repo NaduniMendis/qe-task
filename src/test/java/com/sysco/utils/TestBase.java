@@ -5,7 +5,6 @@ import com.syscolab.qe.core.reporting.SyscoLabListener;
 import com.syscolab.qe.core.reporting.SyscoLabQCenter;
 import com.syscolab.qe.core.reporting.SyscoLabReporting;
 import com.sysco.common.Constants;
-import org.apache.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -43,7 +42,7 @@ public class TestBase {
             if (Constants.UPDATE_DASHBOARD)
                 SyscoLabReporting.generateJsonFile(SyscoLabListener.getResults(), syscoLabQCenter);
 
-            Home.quiteDriver();
+            Home.quitDriverFunction();
 
         } catch (Exception e) {
             e.printStackTrace();

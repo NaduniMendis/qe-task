@@ -12,15 +12,14 @@ import java.util.List;
 public class HomePage {
 
     protected static SyscoLabUI syscoLabUIOgm;
+
+    private By msgEnterage= By.xpath("//*[@id=\"age_content\"]/form/div[7]/div/span");
+    private By errorMsg = By.id("age_missing_message");
+
     private By drpDwnDay = By.id("age_select_day");
     private By drpDwnMonth=By.id("age_select_month");
     private By drpDwnYear=By.id("age_select_year");
-    private By chkRemDevice =By.id("age_checkbox_remember_me");
     private By btnEnter= By.id("age_confirm_btn");
-    private By errorMsg = By.id("age_missing_message");
-    private By txtGoogleSearch = By.id("lst-ib");
-    private By msgEnterage= By.xpath("//*[@id=\"age_content\"]/form/div[7]/div/span");
-
 
     public static void loadHomepage(Capabilities capabilities, String url) {
         syscoLabUIOgm = new SyscoLabWUI(capabilities);
@@ -52,7 +51,6 @@ public class HomePage {
     public void clickButton() {
         syscoLabUIOgm.findElement(btnEnter).click();
 //        syscoLabUIOgm.waitTillElementDisappear(btnEnter);
-
     }
 
     public boolean loadNextPage() {
@@ -71,10 +69,6 @@ public class HomePage {
         }
     }
 
-
-    public void enterText(String searchString) {
-        syscoLabUIOgm.sendKeys(txtGoogleSearch, searchString);
-    }
 
 
 

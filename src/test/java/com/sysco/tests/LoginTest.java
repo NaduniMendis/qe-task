@@ -25,7 +25,7 @@
 //
 //        //UI Automation  sample
 //        Login.loadLoginPage();
-//        Login.quiteDriver();
+//        Login.quitDriverFunction();
 //
 //    }
 //}
