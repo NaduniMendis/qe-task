@@ -25,7 +25,7 @@ public class CartPage extends MyaccountPage {
     private By btnAddtocart= By.xpath("//*[@id=\"price-inner-content\"]/div[2]/div/div[2]/button");
     private By btnCheckout= By.xpath("//*[@id=\"topCartContent\"]/div/div/div/button/span/span");
     private By btnProceedtocheckout= By.xpath("//div[@id='price-total-content']//ul[@class='checkout-types']//button[@title='Proceed to Checkout']/span/span");
-    private By cartIcon=By.xpath("/*[@id=\\\"quick-access-list\\\"]/li[2]/ul/li[3]/div/div[1]/span[2]");
+    private By cartIcon=By.xpath("//*[@id=\"quick-access-list\"]/li[2]/ul/li[3]/div/div[1]/span[2]");
     private By btnContinue= By.id("delivery-address-button");
     private By btnContinueshipmethod= By.id("shipping-method-button");
     private By txtPostcode =By.id("postcodesuburb");
@@ -55,43 +55,27 @@ public class CartPage extends MyaccountPage {
     }
 
     public boolean checkCartpopup() {
-
         syscoLabUIOgm.waitTillElementLoaded(popupCart);
         return syscoLabUIOgm.findElement(popupCart).isDisplayed();
     }
 
     public void clickRemove() {
-//        while (syscoLabUIOgm.findElement(txtCartempty).isDisplayed()==false){
-        gotoCart();
-        syscoLabUIOgm.mouseHover(popupCart);
-        syscoLabUIOgm.waitTillElementLoaded(popupCart);
-        syscoLabUIOgm.sleep(2);
-        syscoLabUIOgm.findElement(btnRemove).click();
-        syscoLabUIOgm.sleep(2);
-        if(syscoLabUIOgm.isAlertDisplayed())
-            syscoLabUIOgm.clickOkInWindowsAlert();
-//    }
-        syscoLabUIOgm.sleep(4);
         int noOfItems = Integer.parseInt(syscoLabUIOgm.getText(cartIcon));
-//        num=syscoLabUIOgm.getText(cartIcon);
-//        noOfItems=Integer.parseInt(num);
-//        System.out.println(num);
-//        System.out.println(noOfItems);
-        if(noOfItems!=0){
-            for(int i=0;i<noOfItems;i++) {
-                gotoCart();
-                syscoLabUIOgm.waitTillElementLoaded(popupCart);
+        System.out.println(noOfItems);
+
+        if (noOfItems != 0) {
+            for (int i = 1; i <= noOfItems; i++) {
+                syscoLabUIOgm.driver.findElement(iconCart).click();
                 syscoLabUIOgm.sleep(2);
-                syscoLabUIOgm.findElement(btnRemove).click();
+                syscoLabUIOgm.driver.findElement(btnRemove).click();
                 syscoLabUIOgm.sleep(2);
-                if (syscoLabUIOgm.isAlertDisplayed())
+                if(syscoLabUIOgm.isAlertDisplayed())
                     syscoLabUIOgm.clickOkInWindowsAlert();
+
             }
         }
-//        System.out.println(noOfItems);
-
-
     }
+
 
     public boolean checkCartempty() {
 
@@ -132,12 +116,14 @@ public class CartPage extends MyaccountPage {
     }
 
     public String verifyItemname() {
-        return syscoLabUIOgm.findElement(itemName).getText();
+//        return syscoLabUIOgm.findElement(itemName).getText();
+        return syscoLabUIOgm.getText(itemName);
 
     }
 
     public String verifyItemprice() {
-        return syscoLabUIOgm.findElement(itemPrice).getText();
+//        return syscoLabUIOgm.findElement(itemPrice).getText();
+        return syscoLabUIOgm.getText(itemPrice);
 
 
     }
@@ -184,7 +170,7 @@ public class CartPage extends MyaccountPage {
     public void clickContinueshipmethod() {
         syscoLabUIOgm.sleep(5);
         syscoLabUIOgm.findElement(btnContinueshipmethod).click();
-        syscoLabUIOgm.sleep(2);;
+//        syscoLabUIOgm.sleep(2);;
     }
 
 

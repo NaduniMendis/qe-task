@@ -36,7 +36,8 @@ public class CartTest extends TestBase {
     @Test (description = "test9",alwaysRun = true,priority = 2)
     public void testremoveCartItem(){
         Cart.removeItem();
-        sAssert.assertEquals(Cart.verifyEmptycart(), true, "Cart item removal failed");
+        boolean result=Cart.verifyEmptycart();
+        sAssert.assertEquals(result, true, "Cart item removal failed");
     }
 
 
@@ -59,12 +60,12 @@ public class CartTest extends TestBase {
 
     @Test(description = "test13",alwaysRun = true,priority = 6)
     public void testItem_name_and_price(){
-        Cart.checkItemName();
-        sAssert.assertEquals(Cart.checkItemName(),
+        String result=Cart.checkItemName();
+        sAssert.assertEquals(result,
                 "BUNDABERG ROYAL LIQUEUR SALTED CARAMEL ...",
                 "Cart item is wrong");
-        Cart.checkItemprice();
-        sAssert.assertEquals(Cart.checkItemprice(),"$49.95", "Item price is wrong");
+        String result1=Cart.checkItemprice();
+        sAssert.assertEquals(result1,"$49.95", "Item price is wrong");
         sAssert.assertAll();
     }
 
