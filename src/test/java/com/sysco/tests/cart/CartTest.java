@@ -90,6 +90,7 @@ public class CartTest extends TestBase {
         Cart.clearformdetails();
         Cart.clickContinue();
         Cart.getEmptyfieldserror();
+        sAssert.assertEquals(Cart.getEmptyfieldserror(), "This is a required field.", "Continue is not validated");
 
     }
 

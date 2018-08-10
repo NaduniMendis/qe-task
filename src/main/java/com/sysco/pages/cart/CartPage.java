@@ -2,10 +2,15 @@ package com.sysco.pages.cart;
 
 import com.sysco.pages.account.MyaccountPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
+
 public class CartPage extends MyaccountPage {
 
 
-    int noOfItems;
+
     String num;
     private By iconCart=By.xpath("//*[@id=\"cartHeader\"]");
     private By popupCart= By.id("topCartContent");
@@ -19,7 +24,7 @@ public class CartPage extends MyaccountPage {
     private By btnAddtocart= By.xpath("//*[@id=\"price-inner-content\"]/div[2]/div/div[2]/button");
     private By btnCheckout= By.xpath("//*[@id=\"topCartContent\"]/div/div/div/button/span/span");
     private By btnProceedtocheckout= By.xpath("//div[@id='price-total-content']//ul[@class='checkout-types']//button[@title='Proceed to Checkout']/span/span");
-    private By cartIcon=By.xpath("/*[@id=\\\"quick-access-list\\\"]/li[2]/ul/li[3]/div/div[1]/span[2]");
+    private By cartIcon=By.xpath("//*[@id=\\\"quick-access-list\\\"]/li[2]/ul/li[3]/div/div[1]/span[2]");
     private By btnContinue= By.id("delivery-address-button");
     private By btnContinueshipmethod= By.id("shipping-method-button");
     private By txtPostcode =By.id("postcodesuburb");
@@ -34,6 +39,9 @@ public class CartPage extends MyaccountPage {
     private By btnPostcode=By.id("billing:postcodesuburbremove");
     private By txtContactnum=By.id("billing:telephone");
     private By errorRquiredFieldMsg= By.id("advice-required-entry-billing:firstname");
+    private By txtCheckout=By.id("checkoutSteps");
+    private By drpDwnCity=By.id("Autocomplete_billing:postcodesuburb");
+    private By cityDropDownItem=By.xpath("//*[@id=\"Autocomplete_billing:postcodesuburb\"]/div[1]");
 
 //    private By itemPrice = By.xpath("/html//div[@id='shopping-cart-table']/div[@class='tbody']/div[@class='product-item']//div[@class='col-3 desktop-view']/span[@class='cart-price']/span[@class='price']");
 
@@ -52,9 +60,7 @@ public class CartPage extends MyaccountPage {
     }
 
     public void clickRemove() {
-//
 //        while (syscoLabUIOgm.findElement(txtCartempty).isDisplayed()==false){
-        System.out.println(noOfItems);
         gotoCart();
         syscoLabUIOgm.mouseHover(popupCart);
         syscoLabUIOgm.waitTillElementLoaded(popupCart);
@@ -63,18 +69,25 @@ public class CartPage extends MyaccountPage {
         if(syscoLabUIOgm.isAlertDisplayed())
             syscoLabUIOgm.clickOkInWindowsAlert();
 //    }
-        num= syscoLabUIOgm.findElement(cartIcon).getText();
-        noOfItems=Integer.parseInt(num);
+        syscoLabUIOgm.sleep(2);
+        int noOfItems =0;
+//        noOfItems = Integer.parseInt(syscoLabUIOgm.findElement(cartIcon).getText());
+      num=syscoLabUIOgm.findElement(cartIcon).getText();
+//        noOfItems=Integer.parseInt(num);
+        System.out.println(num);
+        System.out.println(noOfItems);
         if(noOfItems>0){
             for(int i=0;i<noOfItems;i++) {
                 gotoCart();
                 syscoLabUIOgm.waitTillElementLoaded(popupCart);
                 syscoLabUIOgm.sleep(2);
                 syscoLabUIOgm.findElement(btnRemove).click();
+                syscoLabUIOgm.sleep(2);
                 if (syscoLabUIOgm.isAlertDisplayed())
                     syscoLabUIOgm.clickOkInWindowsAlert();
             }
         }
+        System.out.println(noOfItems);
 
 
     }
@@ -107,10 +120,8 @@ public class CartPage extends MyaccountPage {
         syscoLabUIOgm.waitTillElementLoaded(popupCart);
         syscoLabUIOgm.sleep(10);
         syscoLabUIOgm.findElement(btnCheckout).click();
-
 //        syscoLabUIOgm.findElement(itemName).getText();
 //       syscoLabUIOgm.findElement(txtPostcode).sendKeys(postcode);
-//
 //        syscoLabUIOgm.findElement(btnProceedtocheckout).click();
 //        syscoLabUIOgm.sleep(10);
 //        syscoLabUIOgm.findElement(btnContinue).click();
@@ -139,23 +150,29 @@ public class CartPage extends MyaccountPage {
     }
 
     public String verifyFirstname(){
-        return syscoLabUIOgm.findElement(txtFirstname).getText();
+//        return syscoLabUIOgm.findElement(txtFirstname).getText();
+        return syscoLabUIOgm.findElement(txtFirstname).getAttribute("value");
     }
 
     public String verifyLastname(){
-        return syscoLabUIOgm.findElement(txtLastname).getText();
+        return syscoLabUIOgm.findElement(txtLastname).getAttribute("value");
     }
 
     public void clickContinue() {
 
         syscoLabUIOgm.findElement(btnContinue).click();
-        syscoLabUIOgm.sleep(10);
+        syscoLabUIOgm.sleep(5);
         while (syscoLabUIOgm.isAlertDisplayed()){
+            syscoLabUIOgm.sleep(3);
             syscoLabUIOgm.clickOkInWindowsAlert();
         }
+        syscoLabUIOgm.sleep(5);
 
-        if (syscoLabUIOgm.isAlertDisplayed())
+        if (syscoLabUIOgm.isAlertDisplayed()) {
             syscoLabUIOgm.clickOkInWindowsAlert();
+            syscoLabUIOgm.sleep(5);
+        }
+        if(syscoLabUIOgm.findElement(txtCheckout).isDisplayed())  {syscoLabUIOgm.findElement(btnContinue).click();}
     }
 
     public void clickContinueshipmethod() {
@@ -168,7 +185,7 @@ public class CartPage extends MyaccountPage {
         syscoLabUIOgm.findElement(txtFirstname).clear();
         syscoLabUIOgm.findElement(txtLastname).clear();
         syscoLabUIOgm.findElement(textAddress1).clear();
-        syscoLabUIOgm.findElement(btnPostcode).click();
+        //syscoLabUIOgm.findElement(btnPostcode).click();
         syscoLabUIOgm.findElement(txtContactnum).clear();
 
 
@@ -183,7 +200,24 @@ public class CartPage extends MyaccountPage {
         syscoLabUIOgm.findElement(txtFirstname).sendKeys("william");
         syscoLabUIOgm.findElement(txtLastname).sendKeys("jacob");
         syscoLabUIOgm.findElement(textAddress1).sendKeys("12/1, Park Street");
-        syscoLabUIOgm.findElement(textPostcode).sendKeys(postcode);
+        //syscoLabUIOgm.findElement(textPostcode).sendKeys("2000");
+//        Select cityDropDown = new Select(syscoLabUIOgm.findElement(drpDwnCity));
+//        cityDropDown.selectByIndex(0);
+//        cityDropDown.selectByValue("2000 DAWES POINT NSW");
+//        cityDropDown.selectByVisibleText("2000 DAWES POINT NSW");
+//        syscoLabUIOgm.mouseHover(cityDropDownItem);
+//        syscoLabUIOgm.findElement(cityDropDownItem).click();
+
+//        WebElement select = syscoLabUIOgm.findElement(drpDwnCity);
+//        List<WebElement> options = select.findElements(By.tagName("li"));
+//
+//        for (WebElement option1 : options) {
+//
+//            if("2000 DAWES POINT NSW".equals(option1.getText().trim()))
+//
+//                option1.click();
+//        }
+//
         syscoLabUIOgm.findElement(txtContactnum).sendKeys("777777");
 
     }
