@@ -58,35 +58,47 @@ public class CartTest extends TestBase {
 
     }
 
-    @Test(description = "test13",alwaysRun = true,priority = 6)
-    public void testItem_name_and_price(){
+    @Test(description = "test13-1",alwaysRun = true,priority = 6)
+    public void testItem_name(){
         String result=Cart.checkItemName();
         sAssert.assertEquals(result,
                 "BUNDABERG ROYAL LIQUEUR SALTED CARAMEL ...",
                 "Cart item is wrong");
-        String result1=Cart.checkItemprice();
-        sAssert.assertEquals(result1,"$49.95", "Item price is wrong");
-        sAssert.assertAll();
+
     }
 
-    @Test(description = "test14",alwaysRun = true,priority = 7)
+    @Test(description = "test13-2",alwaysRun = true,priority = 7)
+    public void testItem_price(){
+
+        String result1=Cart.checkItemprice();
+        sAssert.assertEquals(result1,"$49.95", "Item price is wrong");
+
+    }
+
+
+    @Test(description = "test14",alwaysRun = true,priority = 8)
     public void testProceedtocheckout(){
         Cart.proceedtoCheckout();
 
     }
 
-    @Test(description = "test15",alwaysRun = true,priority = 8)
-    public void test_firstname_and_lastname(){
+    @Test(description = "test15-1",alwaysRun = true,priority = 9)
+    public void test_firstname(){
         Cart.checkFirstname();
         sAssert.assertEquals(Cart.checkFirstname(),
                 "william",
                 "Firstname is incorrect");
-        Cart.checkLastname();
-        sAssert.assertEquals(Cart.checkLastname(),"jacob", "Lastname is incorrect");
-        sAssert.assertAll();
+
     }
 
-    @Test(description = "test16",alwaysRun = true,priority = 9)
+    @Test(description = "test15-2",alwaysRun = true,priority = 10)
+    public void test_lastname(){
+        Cart.checkLastname();
+        sAssert.assertEquals(Cart.checkLastname(),"jacob", "Lastname is incorrect");
+
+    }
+
+    @Test(description = "test16",alwaysRun = true,priority = 11)
     public void test_validate_continuebtn(){
         Cart.clearformdetails();
         Cart.clickContinue();
@@ -96,14 +108,14 @@ public class CartTest extends TestBase {
     }
 
 
-    @Test(description = "test17",alwaysRun = true,priority = 10)
+    @Test(description = "test17",alwaysRun = true,priority = 12)
     public void test_continuebtn(){
         Cart.fillformdetails();
         Cart.clickContinue();
 
     }
 
-    @Test(description = "test18",alwaysRun = true,priority = 11)
+    @Test(description = "test18",alwaysRun = true,priority = 13)
     public void test_continueshipbtn(){
         Cart.clickContinueshipbtn();
 
